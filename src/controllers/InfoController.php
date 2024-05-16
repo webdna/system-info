@@ -22,7 +22,7 @@ class InfoController extends Controller
      */
     public function actionIndex(): Response
     {
-        if (Craft::$app->getRequest()->getParam('key') !== App::env('SYSTEM_INFO_KEY')) {
+        if (!App::env('SYSTEM_INFO_KEY') || (Craft::$app->getRequest()->getParam('key') !== App::env('SYSTEM_INFO_KEY'))) {
             return $this->asJson([
 
             ]);
